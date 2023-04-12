@@ -1,0 +1,361 @@
+/* Total increase in the countries m2 supply */
+
+SELECT
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 22') - (SELECT value FROM canada WHERE month = 'Jan 19'))) 'Total M2 Increase - Canada',
+(ROUND((SELECT value FROM china WHERE month = 'Dec 22') - (SELECT value FROM china WHERE month = 'Jan 19'))) AS 'Total M2 Increase - China',
+(ROUND((SELECT value FROM hk WHERE month = 'Dec 22') - (SELECT value FROM hk WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Hong Kong',
+(ROUND((SELECT value FROM japan WHERE month = 'Dec 22') - (SELECT value FROM japan WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Japan',
+(ROUND((SELECT value FROM norway WHERE month = 'Dec 22') - (SELECT value FROM norway WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Norway',
+(ROUND((SELECT value FROM poland WHERE month = 'Dec 22') - (SELECT value FROM poland WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Poland',
+(ROUND((SELECT value FROM singapore WHERE month = 'Dec 22') - (SELECT value FROM singapore WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Singapore',
+(ROUND((SELECT value FROM switzerland WHERE month = 'Dec 22') - (SELECT value FROM switzerland WHERE month = 'Jan 19'))) AS 'Total M2 Increase - Switzerland',
+(ROUND((SELECT value FROM uk WHERE month = 'Dec 22') - (SELECT value FROM uk WHERE month = 'Jan 19'))) AS 'Total M2 Increase - UK',
+(ROUND((SELECT value FROM usa WHERE month = 'Dec 22') - (SELECT value FROM usa WHERE month = 'Jan 19'))) AS 'Total M2 Increase - USA'
+
+
+/* Total percent increase in the countries m2 supply */
+
+SELECT
+((SELECT value FROM canada WHERE month = 'Dec 22') - (SELECT value FROM canada WHERE month = 'Jan 19'))
+/ (SELECT value FROM canada WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM china WHERE month = 'Dec 22') - (SELECT value FROM china WHERE month = 'Jan 19'))
+/ (SELECT value FROM china WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM hk WHERE month = 'Dec 22') - (SELECT value FROM hk WHERE month = 'Jan 19'))
+/ (SELECT value FROM hk WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM japan WHERE month = 'Dec 22') - (SELECT value FROM japan WHERE month = 'Jan 19'))
+/ (SELECT value FROM japan WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM norway WHERE month = 'Dec 22') - (SELECT value FROM norway WHERE month = 'Jan 19'))
+/ (SELECT value FROM norway WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM poland WHERE month = 'Dec 22') - (SELECT value FROM poland WHERE month = 'Jan 19'))
+/ (SELECT value FROM poland WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM singapore WHERE month = 'Dec 22') - (SELECT value FROM singapore WHERE month = 'Jan 19'))
+/ (SELECT value FROM singapore WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM switzerland WHERE month = 'Dec 22') - (SELECT value FROM switzerland WHERE month = 'Jan 19'))
+/ (SELECT value FROM switzerland WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM uk WHERE month = 'Dec 22') - (SELECT value FROM uk WHERE month = 'Jan 19'))
+/ (SELECT value FROM uk WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %',
+((SELECT value FROM usa WHERE month = 'Dec 22') - (SELECT value FROM usa WHERE month = 'Jan 19'))
+/ (SELECT value FROM usa WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+
+/*Total M2 increase by country, comparing value and % increase*/
+
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM canada WHERE month = 'Dec 22') - (SELECT value FROM canada WHERE month = 'Jan 19')) 'Total M2 Increase - Billion',
+((SELECT value FROM canada WHERE month = 'Dec 22') - (SELECT value FROM canada WHERE month = 'Jan 19'))
+/ (SELECT value FROM canada WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM canada 
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM china WHERE month = 'Dec 22') - (SELECT value FROM china WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM china WHERE month = 'Dec 22') - (SELECT value FROM china WHERE month = 'Jan 19'))
+/ (SELECT value FROM china WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM China
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM hk WHERE month = 'Dec 22') - (SELECT value FROM hk WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM hk WHERE month = 'Dec 22') - (SELECT value FROM hk WHERE month = 'Jan 19'))
+/ (SELECT value FROM hk WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM hk
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM japan WHERE month = 'Dec 22') - (SELECT value FROM japan WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM japan WHERE month = 'Dec 22') - (SELECT value FROM japan WHERE month = 'Jan 19'))
+/ (SELECT value FROM japan WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM japan
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM norway WHERE month = 'Dec 22') - (SELECT value FROM norway WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM norway WHERE month = 'Dec 22') - (SELECT value FROM norway WHERE month = 'Jan 19'))
+/ (SELECT value FROM norway WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM norway
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM poland WHERE month = 'Dec 22') - (SELECT value FROM poland WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM poland WHERE month = 'Dec 22') - (SELECT value FROM poland WHERE month = 'Jan 19'))
+/ (SELECT value FROM poland WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM poland
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM singapore WHERE month = 'Dec 22') - (SELECT value FROM singapore WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM singapore WHERE month = 'Dec 22') - (SELECT value FROM singapore WHERE month = 'Jan 19'))
+/ (SELECT value FROM singapore WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM singapore
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM switzerland WHERE month = 'Dec 22') - (SELECT value FROM switzerland WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM switzerland WHERE month = 'Dec 22') - (SELECT value FROM switzerland WHERE month = 'Jan 19'))
+/ (SELECT value FROM switzerland WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM switzerland
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM uk WHERE month = 'Dec 22') - (SELECT value FROM uk WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM uk WHERE month = 'Dec 22') - (SELECT value FROM uk WHERE month = 'Jan 19'))
+/ (SELECT value FROM uk WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM uk
+UNION
+SELECT
+Country,
+Currency,
+ROUND((SELECT value FROM usa WHERE month = 'Dec 22') - (SELECT value FROM usa WHERE month = 'Jan 19')) 'Total M2 Increase',
+((SELECT value FROM usa WHERE month = 'Dec 22') - (SELECT value FROM usa WHERE month = 'Jan 19'))
+/ (SELECT value FROM usa WHERE month = 'Jan 19') * 100 AS 'Total M2 Increase - %'
+FROM usa
+
+/* Increase in M2 value by year  */
+
+
+--CANADA--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 19') - (SELECT value FROM canada WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 20') - (SELECT value FROM canada WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 21') - (SELECT value FROM canada WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 22') - (SELECT value FROM canada WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM canada
+
+--CHINA--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM china WHERE month = 'Dec 19') - (SELECT value FROM china WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM china WHERE month = 'Dec 20') - (SELECT value FROM china WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM china WHERE month = 'Dec 21') - (SELECT value FROM china WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM china WHERE month = 'Dec 22') - (SELECT value FROM china WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM china
+
+--HONG KONG --
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM hk WHERE month = 'Dec 19') - (SELECT value FROM hk WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM hk WHERE month = 'Dec 20') - (SELECT value FROM hk WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM hk WHERE month = 'Dec 21') - (SELECT value FROM hk WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM hk WHERE month = 'Dec 22') - (SELECT value FROM hk WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM hk
+
+--JAPAN--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM japan WHERE month = 'Dec 19') - (SELECT value FROM japan WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM japan WHERE month = 'Dec 20') - (SELECT value FROM japan WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM japan WHERE month = 'Dec 21') - (SELECT value FROM japan WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM japan WHERE month = 'Dec 22') - (SELECT value FROM japan WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM japan
+
+--NORWAY--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM norway WHERE month = 'Dec 19') - (SELECT value FROM norway WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM norway WHERE month = 'Dec 20') - (SELECT value FROM norway WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM norway WHERE month = 'Dec 21') - (SELECT value FROM norway WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM norway WHERE month = 'Dec 22') - (SELECT value FROM norway WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM norway
+
+
+--POLAND--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM poland WHERE month = 'Dec 19') - (SELECT value FROM poland WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM poland WHERE month = 'Dec 20') - (SELECT value FROM poland WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM poland WHERE month = 'Dec 21') - (SELECT value FROM poland WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM poland WHERE month = 'Dec 22') - (SELECT value FROM poland WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM poland
+
+--SINGAPORE--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM singapore WHERE month = 'Dec 19') - (SELECT value FROM singapore WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM singapore WHERE month = 'Dec 20') - (SELECT value FROM singapore WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM singapore WHERE month = 'Dec 21') - (SELECT value FROM singapore WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM singapore WHERE month = 'Dec 22') - (SELECT value FROM singapore WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM singapore
+
+--SWITZERLAND--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM switzerland WHERE month = 'Dec 19') - (SELECT value FROM switzerland WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM switzerland WHERE month = 'Dec 20') - (SELECT value FROM switzerland WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM switzerland WHERE month = 'Dec 21') - (SELECT value FROM switzerland WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM switzerland WHERE month = 'Dec 22') - (SELECT value FROM switzerland WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM switzerland
+
+--UNITED KINGDOM--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM uk WHERE month = 'Dec 19') - (SELECT value FROM uk WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM uk WHERE month = 'Dec 20') - (SELECT value FROM uk WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM uk WHERE month = 'Dec 21') - (SELECT value FROM uk WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM uk WHERE month = 'Dec 22') - (SELECT value FROM uk WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM uk
+
+--UNITED STATES--
+SELECT
+DISTINCT Country,
+Currency,
+(ROUND((SELECT value FROM usa WHERE month = 'Dec 19') - (SELECT value FROM usa WHERE month = 'Jan 19'))) 'Jan 19 - Dec 19',
+(ROUND((SELECT value FROM usa WHERE month = 'Dec 20') - (SELECT value FROM usa WHERE month = 'Jan 20'))) 'Jan 20 - Dec 20',
+(ROUND((SELECT value FROM usa WHERE month = 'Dec 21') - (SELECT value FROM usa WHERE month = 'Jan 21'))) 'Jan 21 - Dec 21',
+(ROUND((SELECT value FROM usa WHERE month = 'Dec 22') - (SELECT value FROM usa WHERE month = 'Jan 22'))) 'Jan 22 - Dec 22'
+FROM usa
+
+
+/* Percentage Change Month to Month  */
+
+
+--CANADA--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   canada
+         group by Country, Month) y;
+
+--CHINA--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   china
+         group by Country, Month) y;
+
+
+--HONG KONG --
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   hk
+         group by Country, Month) y;
+
+
+--JAPAN--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   japan
+         group by Country, Month) y;
+
+
+--NORWAY--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   norway
+         group by Country, Month) y;
+
+
+--POLAND--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   poland
+         group by Country, Month) y;
+
+
+--SINGAPORE--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   singapore
+         group by Country, Month) y;
+
+
+--SWITZERLAND--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   switzerland
+         group by Country, Month) y;
+
+
+--UNITED KINGDOM--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   uk
+         group by Country, Month) y;
+
+
+--UNITED STATES--
+SELECT Country, Month, Value,
+         if(@last_entry = 0, 0, round(((value - @last_entry) / @last_entry) * 100,2)) "percentage change",
+         @last_entry := Value
+         from
+         (select @last_entry := 0) x,
+         (select Country, Month, SUM(value) value
+         from   usa
+         group by Country, Month) y;
+
+/*M2 Value increase for March 19 to December 19 & March 20 to December 20 */
+
+
+--CANADA--
+SELECT
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 19') - (SELECT value FROM canada WHERE month = 'Mar 19'), 2)) 'M2 Increase March 20 to Dec 20 - Canada';
+
+SELECT
+(ROUND((SELECT value FROM canada WHERE month = 'Dec 20') - (SELECT value FROM canada WHERE month = 'Mar 20'), 2)) 'M2 Increase March 20 to Dec 20 - Canada';
+
+
+
+/* M2 Percentage increase for March 19 to December 19 & March 20 to December 20 */
+
+--CANADA--
+SELECT
+((SELECT value FROM canada WHERE month = 'Dec 19') - (SELECT value FROM canada WHERE month = 'Mar 19'))
+/ (SELECT value FROM canada WHERE month = 'Mar 19') * 100 AS 'Total M2 Increase - %'
+
+SELECT
+((SELECT value FROM canada WHERE month = 'Dec 20') - (SELECT value FROM canada WHERE month = 'Mar 20'))
+/ (SELECT value FROM canada WHERE month = 'Mar 20') * 100 AS 'Total M2 Increase - %',
+
+
